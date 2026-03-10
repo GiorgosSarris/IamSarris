@@ -20,35 +20,123 @@ type ResumeSection = {
 const articleLinks: ArticleLink[] = [
   {
     route: 'section-1',
-    label: 'Βιογραφικό Σημείωμα',
-    kicker: 'Greek CV',
-    blurb: 'Opens the Greek version of the CV in an article-style page.',
+    label: 'Αθήνα Dispatch: Scholars Mobilize',
+    kicker: '1821 Bulletin',
+    blurb: 'Το ελληνικό βιογραφικό στέλνεται σαν κρυπτογραφημένο τηλεγράφημα από το στρατηγείο της επανάστασης.',
   },
   {
     route: 'section-2',
-    label: 'Curriculum Vitae',
-    kicker: 'English CV',
-    blurb: 'Opens the English translation of the CV in the same editorial style.',
+    label: 'Foreign Desk: Curriculum Released',
+    kicker: '1851 Exhibition',
+    blurb: 'Η αγγλική μετάφραση κυκλοφορεί σαν ειδική έκδοση για τους κριτές της Great Exhibition.',
   },
   {
     route: 'section-3',
-    label: 'GitHub',
-    kicker: 'External Link',
-    blurb: 'Opens your GitHub profile in a new browser tab.',
+    label: 'Guild Ledger: GitHub Workshops',
+    kicker: '1895 Telegraph',
+    blurb: 'Το προφίλ στο GitHub μεταδίδει commits ως live αναφορές από τα εργαστήρια κώδικα.',
     href: 'https://github.com/GiorgosSarris',
   },
   {
     route: 'section-5',
-    label: 'LinkedIn',
-    kicker: 'External Link',
-    blurb: 'Opens your LinkedIn profile in a new browser tab.',
+    label: 'Society Pages: LinkedIn Salon',
+    kicker: '1905 Salon',
+    blurb: 'Το LinkedIn εμφανίζεται σαν σαλόνι γνωριμιών με διπλωματικές αναφορές σε πραγματικό χρόνο.',
     href: 'https://www.linkedin.com/in/%CE%B3%CE%B9%CF%8E%CF%81%CE%B3%CE%BF%CF%82-%CF%83%CE%B1%CF%81%CF%81%CE%AE%CF%82-b917753ab/',
   },
   {
     route: 'contact-me',
-    label: 'Contact Me',
+    label: 'Contact Bureau',
     kicker: 'Directory',
-    blurb: 'Keeps the contact details in one clean article block.',
+    blurb: 'Τα στοιχεία επικοινωνίας μαζεύονται σαν τηλεγραφικό κέντρο για άμεσες αποστολές.',
+  },
+]
+
+type HistoricalFeature = {
+  className: string
+  kicker: string
+  title: string
+  body: string
+}
+
+type DatelineStory = {
+  dateline: string
+  headline: string
+  summary: string
+}
+
+const historicalTicker = [
+  '1453 Siege Live',
+  '1821 Revolution Feed',
+  '1666 Fire Update',
+  '1776 Press Run',
+  '1522 Siege Watch',
+  '490 BCE Naval Push',
+]
+
+const historicalFeatures: HistoricalFeature[] = [
+  {
+    className: 'faded-article faded-article-a',
+    kicker: 'City Desk',
+    title: '1453 • Constantinople',
+    body: 'Drone cartographers stream breaches along τα Θεοδοσιανά τείχη ενώ οι μηχανικοί ζητούν έκτακτο patch για τις άμυνες.',
+  },
+  {
+    className: 'faded-article faded-article-b',
+    kicker: 'Field Notes',
+    title: '1821 • Πελοπόννησος',
+    body: 'Αναμεταδόσεις από το Μεσολόγγι δείχνουν κρυπτογραφημένους κώδικες Filiki Eteria που ενημερώνουν τους συμμάχους σε πραγματικό χρόνο.',
+  },
+  {
+    className: 'faded-article faded-article-c',
+    kicker: 'Science',
+    title: '1666 • Λονδίνο',
+    body: 'Θερμικοί αισθητήρες επάνω από τον Τάμεση χαρτογραφούν τη Μεγάλη Πυρκαγιά, ενώ αρχιτέκτονες κάνουν live stream τα νέα κανονιστικά σχέδια.',
+  },
+  {
+    className: 'faded-article faded-article-d',
+    kicker: 'Diplomatic Pouch',
+    title: '1776 • Φιλαδέλφεια',
+    body: 'Οι συντάκτες της Διακήρυξης χρησιμοποιούν ασφαλή cloud υπογραφή και στέλνουν push notifications στις ευρωπαϊκές αυλές.',
+  },
+  {
+    className: 'faded-article faded-article-e',
+    kicker: 'Explorers',
+    title: '1519 • Τενοτστιτλάν',
+    body: 'Οι χαρτογράφοι του Νέου Κόσμου ανεβάζουν διαδραστικούς χάρτες ώστε τα ισπανικά καράβια να πλοηγηθούν με «ζωντανά» δεδομένα.',
+  },
+]
+
+const datelineStories: DatelineStory[] = [
+  {
+    dateline: 'Αθήνα • 490 π.Χ.',
+    headline: 'Ο Μαραθώνιος αποκτά live timing',
+    summary: 'Αγγελιαφόροι με έξυπνα σανδάλια στέλνουν κάθε σφυγμό της μάχης στους πολίτες μέσω διαδραστικών πινακίδων.',
+  },
+  {
+    dateline: 'Αλεξάνδρεια • 48 π.Χ.',
+    headline: 'Η Βιβλιοθήκη τρέχει backup cloud',
+    summary: 'Οι γραμματείς ψηφιοποιούν παπύρους σε πραγματικό χρόνο ώστε καμία κύλιση να μη χαθεί στην πολιτική αναταραχή.',
+  },
+  {
+    dateline: 'Λονδίνο • 1666',
+    headline: 'Υπερσύνδεση bucket brigade',
+    summary: 'Δίκτυα ειδοποιήσεων κατευθύνουν πολίτες σε ασφαλείς δρόμους καθώς ο Σερ Κρίστοφερ Ρεν δημοσιεύει τα νέα σχέδια ανοικοδόμησης.',
+  },
+  {
+    dateline: 'Κωνσταντινούπολη • 1453',
+    headline: 'Τείχη με telemetry',
+    summary: 'Σένσορες σε κανονιοθυρίδες μεταδίδουν θερμοκρασίες ώστε τα πληρώματα να ξέρουν πότε να αλλάξουν πυρομαχικά.',
+  },
+  {
+    dateline: 'Φλωρεντία • 1504',
+    headline: 'Ο Δαβίδ λαμβάνει patch notes',
+    summary: 'Ο Μιχαήλ Άγγελος ανεβάζει changelog για το μαρμάρινο γλυπτό και ζητά σχόλια από τους συνδρομητές του εργαστηρίου.',
+  },
+  {
+    dateline: 'Κίτο • 1736',
+    headline: 'Η αποστολή μέτρησης Ισημερινού εκπέμπει stories',
+    summary: 'Οι γεωγράφοι της Γαλλικής Ακαδημίας στέλνουν καθημερινά snaps με τα όργανα που ορίζουν ακριβώς τον μηδενικό παράλληλο.',
   },
 ]
 
@@ -378,7 +466,12 @@ function App() {
 
         <section className="news-strip lead-strip" aria-hidden="true">
           <span className="strip-label">Front Page</span>
-          <p>Breaking news: this newspaper is 63% portfolio, 27% layout, and 10% dramatic headlines.</p>
+          <p>Live desk: drones πάνω από την Κωνσταντινούπολη στέλνουν push alerts ενώ οι τυπογράφοι της Αναγέννησης ανεβάζουν pdf με τις νέες εφευρέσεις.</p>
+        </section>
+
+        <section className="news-strip chronicle-strip" aria-hidden="true">
+          <span className="strip-label">Chronicle</span>
+          <p>1821: το Φιλικό feed παίρνει φωτιά. 1666: η πυρκαγιά χαρτογραφείται σε real time. 1504: ο Δαβίδ δέχεται σχόλια design review.</p>
         </section>
 
         <button className="article-card article-card-lead" onClick={() => openArticle(articleLinks[0])} type="button">
@@ -390,8 +483,8 @@ function App() {
 
         <aside className="sidebar-note" aria-hidden="true">
           <span className="sidebar-kicker">Notebook</span>
-          <h3>Editorial Notes</h3>
-          <p>Editors confirm the page needed more texture, fewer speeches, and at least one unnecessary box.</p>
+          <h3>Chrononaut Editors</h3>
+          <p>Συντονίζουν να τυπώνονται ταυτόχρονα χθεσινά και μεσαιωνικά νέα, κρατώντας τον lead story για το βιογραφικό σου.</p>
         </aside>
 
         <button className="article-card article-card-profile" onClick={() => openArticle(articleLinks[1])} type="button">
@@ -403,7 +496,7 @@ function App() {
 
         <section className="mini-column" aria-hidden="true">
           <span className="mini-kicker">Morning Brief</span>
-          <p>Weather update: partly cloudy with a strong chance of overdesigned margins by noon.</p>
+          <p>Αναφορές από τον Πειραιά λένε ότι τριήρεις με Wi-Fi φτάνουν στο λιμάνι κουβαλώντας tablets γεμάτα κώδικα.</p>
         </section>
 
         <button className="article-card article-card-github" onClick={() => openArticle(articleLinks[2])} type="button">
@@ -414,7 +507,7 @@ function App() {
         </button>
 
         <section className="quote-block" aria-hidden="true">
-          <p>“A good front page whispers background noise and shouts the important buttons.”</p>
+          <p>“Η καλύτερη σελίδα είναι αυτή που μεταδίδει Μαραθώνιους και pull requests στο ίδιο δελτίο.”</p>
         </section>
 
         <button className="article-card article-card-contact" onClick={() => openArticle(articleLinks[4])} type="button">
@@ -425,43 +518,18 @@ function App() {
         </button>
 
         <section className="ticker-row" aria-hidden="true">
-          <span>Late Edition</span>
-          <span>Extra Ink</span>
-          <span>Page Four</span>
-          <span>Tiny Drama</span>
-          <span>More Columns</span>
-          <span>No Facts Checked</span>
+          {historicalTicker.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
         </section>
 
-        <section className="faded-article faded-article-a" aria-hidden="true">
-          <h3>City Desk</h3>
-          <div className="graphic-bars">
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-          <p>The intern made this chart after hearing the phrase “add visual interest” one too many times.</p>
-        </section>
-
-        <section className="faded-article faded-article-b" aria-hidden="true">
-          <h3>Editorial</h3>
-          <div className="graphic-grid">
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-          <p>Experts agree these black squares mean something important, but nobody remembers what.</p>
-        </section>
-
-        <section className="faded-article faded-article-c" aria-hidden="true">
-          <h3>Weekend</h3>
-          <div className="graphic-circle" />
-          <p>This circle represents balance, mystery, or possibly someone forgetting to finish a pie chart.</p>
-        </section>
+        {historicalFeatures.map((feature) => (
+          <section className={feature.className} aria-hidden="true" key={feature.title}>
+            <span className="mini-kicker">{feature.kicker}</span>
+            <h3>{feature.title}</h3>
+            <p>{feature.body}</p>
+          </section>
+        ))}
 
         <button className="article-card article-card-extra" onClick={() => openArticle(articleLinks[3])} type="button">
           <span className="article-kicker">{articleLinks[3].kicker}</span>
@@ -470,28 +538,14 @@ function App() {
           <p>{articleLinks[3].blurb}</p>
         </button>
 
-        <section className="faded-article faded-article-d" aria-hidden="true">
-          <h3>Bulletin</h3>
-          <div className="graphic-bars graphic-bars-thin">
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-          <p>Market report: headlines up, attention spans down, decorative rectangles holding steady.</p>
-        </section>
-
-        <section className="faded-article faded-article-e" aria-hidden="true">
-          <h3>Berlin</h3>
-          <div className="graphic-grid graphic-grid-wide">
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-            <span />
-          </div>
-          <p>Foreign desk dispatch: the layout has crossed several borders and returned with sharper angles.</p>
+        <section className="timeline-grid" aria-label="Historic live feed">
+          {datelineStories.map((story) => (
+            <article className="timeline-card" key={story.headline}>
+              <span className="timeline-meta">{story.dateline}</span>
+              <h3>{story.headline}</h3>
+              <p>{story.summary}</p>
+            </article>
+          ))}
         </section>
       </section>
     </main>
