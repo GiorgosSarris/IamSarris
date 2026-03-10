@@ -484,7 +484,7 @@ function App() {
         <aside className="sidebar-note" aria-hidden="true">
           <span className="sidebar-kicker">Notebook</span>
           <h3>Chrononaut Editors</h3>
-          <p>Editors route telegrams between the 1821 provisional government, 1776 Philadelphia printers, and 1905 diplomatic salons while protecting your lead story.</p>
+          <p>Papers in Athens, Philadelphia, and St. Petersburg beam edits through the Chrononaut desk so 1821 dispatches, 1776 broadsheets, and 1905 salons share a single headline rail.</p>
         </aside>
 
         <button className="article-card article-card-profile" onClick={() => openArticle(articleLinks[1])} type="button">
