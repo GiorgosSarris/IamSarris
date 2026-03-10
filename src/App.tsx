@@ -466,12 +466,12 @@ function App() {
 
         <section className="news-strip lead-strip" aria-hidden="true">
           <span className="strip-label">Front Page</span>
-          <p>Live desk: siege balloons over Constantinople push alerts while Renaissance printers upload fresh schematics for the future.</p>
+          <p>May 29, 1453: signal balloons report breaches in Constantinople while Venetian presses leak tomorrow’s siege schematics.</p>
         </section>
 
         <section className="news-strip chronicle-strip" aria-hidden="true">
           <span className="strip-label">Chronicle</span>
-          <p>1821: the Filiki feed ignites. 1666: the fire maps itself in real time. 1504: David gets design review comments.</p>
+          <p>1821: Messolonghi transmits encrypted independence bulletins. 1666: London Fire draws a live safety map. 1504: Michelangelo posts David revisions.</p>
         </section>
 
         <button className="article-card article-card-lead" onClick={() => openArticle(articleLinks[0])} type="button">
@@ -484,7 +484,7 @@ function App() {
         <aside className="sidebar-note" aria-hidden="true">
           <span className="sidebar-kicker">Notebook</span>
           <h3>Chrononaut Editors</h3>
-          <p>They print yesterday and medieval dispatches side by side, reserving the prime headline for your portfolio.</p>
+          <p>Editors route telegrams between the 1821 provisional government, 1776 Philadelphia printers, and 1905 diplomatic salons while protecting your lead story.</p>
         </aside>
 
         <button className="article-card article-card-profile" onClick={() => openArticle(articleLinks[1])} type="button">
@@ -496,7 +496,7 @@ function App() {
 
         <section className="mini-column" aria-hidden="true">
           <span className="mini-kicker">Morning Brief</span>
-          <p>Reports from Piraeus say triremes with onboard Wi-Fi dock at sunrise delivering tablets filled with code.</p>
+          <p>Marathon couriers, 490 BCE, broadcast heartbeat metrics from the battlefield before the cavalry even saddles.</p>
         </section>
 
         <button className="article-card article-card-github" onClick={() => openArticle(articleLinks[2])} type="button">
@@ -507,7 +507,7 @@ function App() {
         </button>
 
         <section className="quote-block" aria-hidden="true">
-          <p>“The best front page streams both marathons and pull requests in one bulletin.”</p>
+          <p>“Philadelphia 1776 reports that Liberty Bell alerts now auto-sign the parchment,” notes the colonial press chief.</p>
         </section>
 
         <button className="article-card article-card-contact" onClick={() => openArticle(articleLinks[4])} type="button">
