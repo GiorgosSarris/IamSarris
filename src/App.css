@@ -1,3 +1,7 @@
+:root {
+  font-size: 100%;
+}
+
 #root {
   min-height: 100vh;
 }
@@ -560,7 +564,7 @@ body {
   }
 
   .newspaper-layout > *:not(.paper-stack) {
-    grid-column: 1 / -1;
+    grid-column: 1 / -1 !important;
     grid-row: auto !important;
   }
 
@@ -606,8 +610,9 @@ body {
   }
 
   .newspaper-layout {
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     gap: 12px;
     border-width: 2px;
   }
@@ -656,6 +661,10 @@ body {
     position: sticky;
     top: 12px;
   }
+
+  :root {
+    font-size: 92%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -687,5 +696,15 @@ body {
   .back-link {
     width: 100%;
     text-align: center;
+  }
+
+  .article-card p,
+  .sidebar-note p,
+  .ticker-row p {
+    font-size: 0.75rem;
+  }
+
+  :root {
+    font-size: 88%;
   }
 }
