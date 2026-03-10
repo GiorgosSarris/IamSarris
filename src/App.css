@@ -123,6 +123,7 @@ body {
 .lead-strip {
   grid-column: 1 / -1;
   grid-row: 2;
+  margin-top: 8px;
 }
 
 .chronicle-strip {
@@ -343,7 +344,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  opacity: 0.82;
 }
 
 .faded-article p {
@@ -634,6 +634,14 @@ body {
   .newspaper-layout > *:not(.paper-stack) {
     grid-column: auto !important;
     grid-row: auto !important;
+  }
+
+  .newspaper-masthead,
+  .lead-strip,
+  .chronicle-strip,
+  .ticker-row,
+  .timeline-grid {
+    grid-column: 1 / -1 !important;
   }
 }
 
