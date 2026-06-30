@@ -1,0 +1,50 @@
+<?php
+$titles = [
+    'bio'     => 'Βιογραφία & Προφίλ',
+    'info'    => 'Προσωπικά Στοιχεία',
+    'work'    => 'Τα Έργα μου',
+    'contact' => 'Contact',
+];
+?>
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= $titles['contact'] ?> — Curriculum Vitae</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<div class="newspaper">
+
+    <div class="np-topbar">
+        Βιογραφικό Σημείωμα &nbsp;✦&nbsp; <?= date('j F Y') ?>
+    </div>
+
+    <div class="np-dateline">
+        <span>✦</span>
+        <span>Αθήνα, Ελλάδα</span>
+        <span>✦</span>
+        <a href="../index.php" class="np-back"><- Exit</a>
+        <span>✦</span>
+    </div>
+    <div class="np-page-body">
+        <h2><?= $titles['contact'] ?></h2>
+
+        <p><strong>Phone:</strong><br><a href="tel:+306947011911">6947011911</a></p>
+        <p><strong>Email:</strong><br><a href="mailto:sarrisgeorge5@gmail.com">sarrisgeorge5@gmail.com</a></p>
+        <p><strong>GitHub:</strong><br><a href="https://github.com/GiorgosSarris" target="_blank" rel="noopener noreferrer">github.com/GiorgosSarris</a></p>
+        <p><strong>LinkedIn:</strong><br><a href="https://linkedin.com/in/giorgos-sarris" target="_blank" rel="noopener noreferrer">linkedin.com/in/giorgos-sarris</a></p>
+    </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
