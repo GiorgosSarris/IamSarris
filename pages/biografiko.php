@@ -1,8 +1,8 @@
 <?php
 $titles = [
-    'bio'    => 'Βιογραφία & Προφίλ',
-    'info'   => 'Προσωπικά Στοιχεία',
-    'work'   => 'Τα Έργα μου',
+    'bio'        => 'Βιογραφία & Προφίλ',
+    'info'       => 'Προσωπικά Στοιχεία',
+    'work'       => 'Τα Έργα μου',
     'biografiko' => 'Το Βιογραφικό μου',
 ];
 ?>
@@ -12,89 +12,180 @@ $titles = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titles['biografiko'] ?> — Curriculum Vitae</title>
+    <link rel="icon" type="image/png" href="../assets/img/gslogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+
 <body>
 
 <div class="newspaper">
 
     <div class="np-topbar">
-        Βιογραφικό Σημείωμα &nbsp;✦&nbsp; <?= date('j F Y') ?>
+        Εφημερίδα Βιογραφικού Σημειώματος &nbsp;✦&nbsp; <?= date('j F Y') ?>
+    </div>
+
+    <div class="np-masthead">
+        <h1>Curriculum Vitae</h1>
     </div>
 
     <div class="np-dateline">
-        <span>✦</span>
-        <span>Αθήνα, Ελλάδα</span>
-        <span>✦</span>
-        <a href="../index.php" class="np-back"><- Exit</a>
-        <span>✦</span>
+        <span>✦ Αθήνα, Ελλάδα ✦</span>
+        <span>Georgios N. Sarris</span>
+        <a href="../index.php" class="np-back">← Exit</a>
     </div>
 
     <div class="np-page-body">
 
-        <h2><?= $titles['biografiko'] ?></h2>
+        <h2>Γεώργιος Νικόλαος Σαρρής</h2>
 
-        <h3>ΓΕΩΡΓΙΟΣ ΝΙΚΟΛΑΟΣ ΣΑΡΡΗΣ</h3>
-        <p> Αθήνα, Αττική| Τηλέφωνο: 6947011911| Email:sarrisgeorge5@gmail.com| Website:lamSarris</p>
-        <h2>ΕΠΑΓΓΕΛΜΑΤΙΚΟ ΠΡΟΦΙΛ</h2>
         <p>
-            Φοιτητής Πληροφορικής στο Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών,
-            με ισχυρό υπόβαθρο στους αλγορίθμους, στις βάσεις δεδομένων, στα λειτουργικά
-            συστήματα και στην τεχνητή νοημοσύνη. Διαθέτω εμπειρία σε C, C++, Python,
-            Java, Assembly, PHP, JavaScript, HTML, CSS και SQL. Είμαι εξοικειωμένος με
-            περιβάλλοντα Linux, καθώς και με την ανάπτυξη backend και frontend εφαρμογών.
+            Αθήνα, Αττική | Τηλέφωνο:
+            <a href="tel:+306947011911">6947011911</a>
+            | Email:
+            <a href="mailto:sarrisgeorge5@gmail.com">sarrisgeorge5@gmail.com</a>
+            | GitHub:
+            <a href="https://github.com/GiorgosSarris" target="_blank" rel="noopener noreferrer">
+                github.com/GiorgosSarris
+            </a>
         </p>
 
-        <h2>ΕΠΑΓΓΕΛΜΑΤΙΚΗ ΕΜΠΕΙΡΙΑ</h2>
-        <p><strong>Full Stack Developer</strong> — Ironcloud ΙΚΕ, Αθήνα (2026-Σήμερα)</p>
-        <p><strong>Σερβιτόρος Εστιατορίου</strong> — Εστιατόριο «Σκλήθρι», Σκιάθος (2022-2025)</p>
-        <p><strong>Υπεύθυνος Beach Bar</strong> — 4 χρόνια εμπειρίας</p>
+        <div class="np-two-col">
 
-        <h2>ΠΤΥΧΙΑΚΗ ΕΡΓΑΣΙΑ</h2>
-        <p><strong>Ανάπτυξη Ολοκληρωμένου Συστήματος Agent για την Αξιολόγηση Προγραμματιστικών Εργασιών</strong></p>
-        <ul>
-            <li>Backend: Python | Frontend: Streamlit</li>
-            <li>Η εφαρμογή επιτρέπει σε διδάσκοντες να αξιολογούν εργασίες σε C, C++, Python, Java και JavaScript.</li>
-            <li>Ανάλυση φακέλων και αρχείων φοιτητών.</li>
-            <li>Αυτόματη αναγνώριση γλωσσών προγραμματισμού.</li>
-            <li>Εξαγωγή κρίσιμων πληροφοριών από τον κώδικα.</li>
-            <li>Ενσωμάτωση εκφώνησης εργασίας και απαιτήσεων διδάσκοντα.</li>
-            <li>Δημιουργία προσωποποιημένων quiz.</li>
-            <li>Καθαρισμός και μετατροπή σε μορφή Aiken, έτοιμη για εισαγωγή στο eClass.</li>
-        </ul>
+            <div class="np-col">
 
-        <h2>ΤΕΧΝΙΚΕΣ ΔΕΞΙΟΤΗΤΕΣ</h2>
-        <ul>
-            <li><strong>Γλώσσες Προγραμματισμού:</strong> C, C++, Python, Java, Assembly, SQL, PHP, HTML, CSS, JavaScript</li>
-            <li><strong>Εργαλεία:</strong> bash, git, REST API</li>
-            <li><strong>Λειτουργικά Συστήματα:</strong> Linux Ubuntu/Manjaro, Windows</li>
-            <li><strong>Άλλες Δεξιότητες:</strong> AI Agents, Data Mining, Debugging, Ηλεκτρολογική Καλωδίωση</li>
-        </ul>
+                <h2>Επαγγελματικό Προφίλ</h2>
 
-        <h2>ΕΚΠΑΙΔΕΥΣΗ</h2>
-        <p><strong>Προπτυχιακός Φοιτητής</strong> — Τμήμα Πληροφορικής και Τηλεπικοινωνιών, Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών (2023 - Σήμερα)</p>
-        <p><strong>Ενδεικτικά ολοκληρωμένα μαθήματα:</strong></p>
-        <ul>
-            <li>Γραμμική Άλγεβρα, Διακριτά Μαθηματικά, Εισαγωγή στον Προγραμματισμό, Εισαγωγή στην Πληροφορική και στις Τηλεπικοινωνίες</li>
-            <li>Λογική Σχεδίαση, Ανάλυση 1, Αρχιτεκτονική Υπολογιστών 1, Δομές Δεδομένων και Τεχνικές Προγραμματισμού, Αντικειμενοστραφής Προγραμματισμός, Προγραμματισμός Συστήματος</li>
-            <li>Ηλεκτρομαγνητισμός, Ανάλυση 2, Πιθανότητες και Στατιστική</li>
-            <li>Σήματα και Συστήματα, Αλγόριθμοι και Πολυπλοκότητα, Δίκτυα Επικοινωνιών 1, Συστήματα Επικοινωνιών</li>
-            <li>Σχεδίαση και Χρήση Βάσεων Δεδομένων, Υλοποίηση Συστημάτων Βάσεων Δεδομένων, Λειτουργικά Συστήματα, Γραφικά</li>
-            <li>Αριθμητική Ανάλυση, Θεωρία Αριθμών, Τεχνητή Νοημοσύνη 1, Τεχνικές Εξόρυξης Δεδομένων, Αλγόριθμοι για Μηχανική Μάθηση, Αναγνώριση Προτύπων Μηχανικής Μάθησης</li>
-            <li>Δομή και Θεσμοί της Ευρωπαϊκής Ένωσης, Εκπαιδευτική Ψυχολογία, Διοίκηση Έργων, Καινοτομία και Επιχειρηματικότητα</li>
-        </ul>
+                <p>
+                    Φοιτητής Πληροφορικής στο Εθνικό και Καποδιστριακό Πανεπιστήμιο Αθηνών,
+                    με ισχυρό υπόβαθρο στους αλγορίθμους, στις βάσεις δεδομένων, στα λειτουργικά
+                    συστήματα και στην τεχνητή νοημοσύνη.
+                </p>
 
-        <h2>ΓΛΩΣΣΕΣ</h2>
-        <ul>
-            <li>Ελληνικά: Μητρική γλώσσα</li>
-            <li>Αγγλικά: C2 — Proficiency Michigan</li>
-            <li>Γαλλικά: B2 — DELF</li>
-            <li>Ιταλικά: Καλή γνώση</li>
-        </ul>
+                <p>
+                    Διαθέτω εμπειρία σε C, C++, Python, Java, Assembly, JavaScript, PHP,
+                    HTML, CSS και SQL. Είμαι εξοικειωμένος με περιβάλλοντα Linux, καθώς και
+                    με την ανάπτυξη backend και frontend εφαρμογών.
+                </p>
+
+                <h2>Πτυχιακή Εργασία</h2>
+
+                <p>
+                    <strong>Ανάπτυξη Ολοκληρωμένου Συστήματος Αξιολόγησης Εργασιών Προγραμματισμού</strong>
+                </p>
+
+                <p>
+                    Backend: Python | Frontend: Streamlit. Η εφαρμογή επιτρέπει σε καθηγητές
+                    να αξιολογούν εργασίες σε C, C++, Python, Java και JavaScript.
+                </p>
+
+                <ul>
+                    <li>Ανάλυση φακέλων και αρχείων φοιτητών.</li>
+                    <li>Αυτόματη αναγνώριση γλώσσας προγραμματισμού.</li>
+                    <li>Εξαγωγή κρίσιμων πληροφοριών από τον κώδικα.</li>
+                    <li>Συνδυασμός εκφώνησης και απαιτήσεων καθηγητή.</li>
+                    <li>Δημιουργία εξατομικευμένου quiz έτοιμου για eClass.</li>
+                </ul>
+
+                <h2>Επαγγελματική Εμπειρία</h2>
+
+                <p>
+                    <strong>Full Stack Software Engineer — Ironcloud Solutions</strong><br>
+                    Μάιος 2026 – Σήμερα
+                </p>
+
+                <p>
+                    Συμμετοχή σε διάφορα έργα, μεταξύ των οποίων:
+                </p>
+
+                <ul>
+                    <li><strong>mytimologisi:</strong> mytimologisi.gr</li>
+                    <li>Νέα ιστοσελίδα της ΓΥΣ: web.gys.gr</li>
+                    <li><strong>ipartsgroup.gr</strong> της Interamerican</li>
+                    <li>Συντήρηση hardware και υποδομής για την Bildium Constructions</li>
+                </ul>
+
+                <p>
+                    <strong>Σερβιτόρος — Εστιατόριο «Σκλήθρι», Σκιάθος</strong><br>
+                    2022 – 2025
+                </p>
+
+                <ul>
+                    <li>Ανάπτυξη υπευθυνότητας, διαχείρισης πίεσης και ομαδικής συνεργασίας.</li>
+                </ul>
+
+                <p>
+                    <strong>Σερβιτόρος Παραλίας / Beach Bar</strong><br>
+                    7 έτη εμπειρίας
+                </p>
+
+                <ul>
+                    <li>Εξυπηρέτηση πελατών και διαχείριση φιλοξενίας σε απαιτητικό περιβάλλον.</li>
+                </ul>
+
+            </div>
+
+            <div class="np-col">
+
+                <h2>Τεχνικές Δεξιότητες</h2>
+
+                <ul>
+                    <li><strong>Languages:</strong> C, C++, Python, Java, Assembly, SQL, JavaScript, PHP, HTML, CSS</li>
+                    <li><strong>Tools:</strong> Linux Terminal, GCC, Git, Webecr, REST API</li>
+                    <li><strong>Databases:</strong> SQL</li>
+                    <li><strong>Operating Systems:</strong> Linux Ubuntu, Manjaro, Windows, IBM i IFS</li>
+                    <li><strong>Other:</strong> Full Stack Software Engineering, PC Hardware, Server Building, AI Agents, Data Mining, Debugging, Electrical Wiring</li>
+                </ul>
+
+                <h2>Εκπαίδευση</h2>
+
+                <p>
+                    <strong>Προπτυχιακός Φοιτητής</strong><br>
+                    Τμήμα Πληροφορικής και Τηλεπικοινωνιών, ΕΚΠΑ<br>
+                    2023 – Σήμερα
+                </p>
+
+                <p>
+                    <strong>Ενδεικτικά περασμένα μαθήματα:</strong>
+                </p>
+
+                <ul>
+                    <li>Γραμμική Άλγεβρα, Διακριτά Μαθηματικά, Εισαγωγή στον Προγραμματισμό.</li>
+                    <li>Λογική Σχεδίαση, Ανάλυση 1, Αρχιτεκτονική Υπολογιστών 1.</li>
+                    <li>Δομές Δεδομένων και Τεχνικές Προγραμματισμού.</li>
+                    <li>Αντικειμενοστραφής Προγραμματισμός, Προγραμματισμός Συστήματος.</li>
+                    <li>Ηλεκτρομαγνητισμός, Ανάλυση 2, Πιθανότητες και Στατιστική.</li>
+                    <li>Σήματα και Συστήματα, Αλγόριθμοι και Πολυπλοκότητα.</li>
+                    <li>Δίκτυα Επικοινωνιών 1, Συστήματα Επικοινωνιών.</li>
+                    <li>Σχεδίαση και Χρήση Βάσεων Δεδομένων.</li>
+                    <li>Υλοποίηση Συστημάτων Βάσεων Δεδομένων, Λειτουργικά Συστήματα, Γραφικά.</li>
+                    <li>Αριθμητική Ανάλυση, Θεωρία Αριθμών.</li>
+                    <li>Τεχνητή Νοημοσύνη 1, Τεχνικές Εξόρυξης Δεδομένων.</li>
+                    <li>Αναγνώριση Προτύπων - Μηχανική Μάθηση.</li>
+                    <li>Αλγόριθμοι Θεμελίωσης Μηχανικής Μάθησης.</li>
+                    <li>Δομή και Θεσμοί Ευρωπαϊκής Ένωσης.</li>
+                    <li>Παιδαγωγική Ψυχολογία, Διοίκηση Έργων, Καινοτομία και Επιχειρηματικότητα.</li>
+                </ul>
+
+                <h2>Γλώσσες</h2>
+
+                <ul>
+                    <li><strong>Ελληνικά:</strong> Μητρική</li>
+                    <li><strong>Αγγλικά:</strong> C2 — Proficiency Michigan</li>
+                    <li><strong>Γαλλικά:</strong> B2 — DELF</li>
+                    <li><strong>Ιταλικά:</strong> Καλά</li>
+                </ul>
+
+            </div>
+
+        </div>
+
     </div>
+
 </div>
+
 <script src="../assets/js/main.js"></script>
 </body>
 </html>
