@@ -17,7 +17,7 @@ body {
 
 /* ── NEWSPAPER ── */
 .newspaper {
-    width: 600px;
+    width: min(760px, 94vw);
     margin: 50px auto 0;
     background: #f2e8d0;
     border: 1px solid #1a1008;
@@ -25,6 +25,16 @@ body {
     display: flex;
     flex-direction: column;
     transform-origin: top center;
+}
+
+/* Αρχική σελίδα: κράτα την πιο compact όπως πριν */
+.newspaper-home {
+    width: 600px;
+}
+
+/* Εσωτερικές σελίδες βιογραφικού/resume/contact πιο φαρδιές */
+body:has(.np-page-body) .newspaper:not(.newspaper-home) {
+    width: min(780px, 94vw);
 }
 
 /* ── TOPBAR ── */
