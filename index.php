@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curriculum Vitae</title>
+    <link rel="icon" type="image/png" href="assets/img/gslogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="newspaper">
+<div class="newspaper newspaper-home">
 
     <!-- MASTHEAD -->
     <div class="np-topbar">
@@ -68,13 +69,12 @@
     <!-- SECTION 2 -->
     <div class="np-section np-grid-mid">
 
-        <a href="pages/projects.php" class="np-cell">
-            <div class="np-cell-head">development projects</div>
-            <div class="np-cell-title">My Projects</div>
-            <div class="np-cell-sub">This page includes all my development projects and web apps.<br>Project will be added soon.</div>
+        <a  href="https://www.linkedin.com/in/%CE%B3%CE%B9%CF%8E%CF%81%CE%B3%CE%BF%CF%82-%CF%83%CE%B1%CF%81%CF%81%CE%AE%CF%82-b917753ab/"  target="_blank"  rel="noopener noreferrer"  class="np-cell">
+            <div class="np-cell-head">Professional Profile</div>
+            <div class="np-cell-title">LinkedIn Profile</div>
+            <div class="np-cell-sub">Connect with me professionally and view my experience, education and career updates.</div>
             <div class="np-lines">
-                <div class="np-line short"></div><div class="np-line"></div><div class="np-line"></div>
-                <div class="np-line short"></div><div class="np-line"></div>
+                <div class="np-line"></div>
                 <div class="np-line"></div>
             </div>
             <span class="np-cell-arrow">→</span>
