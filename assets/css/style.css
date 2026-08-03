@@ -141,31 +141,31 @@ body:has(.np-page-body) .newspaper:not(.newspaper-home) {
     border-bottom: 1px solid #1a1008;
 }
 
-/* ── PHOTO ───────────────────────── */
-.np-photo {
-    padding: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+/* PHOTO */
+.np-photo{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    padding:14px 8px;
 }
 
-.np-photo-frame {
-    width: 100%;
-    max-width: 210px;
-    height: 280px;          /* ΣΤΑΘΕΡΟ ύψος */
-    background: #d4c4a0;
-    border: 1px solid #3a2a10;
-    overflow: hidden;
-    padding: 4px;
+.np-photo-frame{
+    width:75%;          /* αντί για 100% */
+    max-width:160px;    /* αρκετά μικρότερη */
+    aspect-ratio:4/5;
+    padding:4px;
+    border:1px solid #3a2a10;
+    background:#d4c4a0;
 }
 
-.np-photo-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: grayscale(30%);
+.np-photo-frame img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    filter:grayscale(30%);
 }
 
 .np-photo-decoration {
@@ -186,6 +186,33 @@ body:has(.np-page-body) .newspaper:not(.newspaper-home) {
     padding: 0 8px;
     color: #8b6a3f;
     font-size: 11px;
+}
+
+.np-paper-line{
+    width:85%;
+    height:1px;
+    background:#6b5633;
+    position:relative;
+}
+
+.np-paper-line::before,
+.np-paper-line::after{
+    content:"❦";
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    color:#6b5633;
+    font-size:10px;
+    background:#f2e8d0;
+    padding:0 4px;
+}
+
+.np-paper-line::before{
+    left:18%;
+}
+
+.np-paper-line::after{
+    right:18%;
 }
 
 /* ── CELLS ── */
@@ -415,14 +442,18 @@ body:has(.np-page-body) .newspaper:not(.newspaper-home) {
     .modal-body { padding: 16px 14px; }
 }
 
-@media (max-width: 640px) {
+@media (max-width:640px){
 
-    .np-photo {
-        padding: 18px 10px;      /* περισσότερο κενό */
+    .np-photo{
+        gap:22px;
     }
 
-    .np-photo-frame {
-        height: 220px;           /* δεν γίνεται τεράστια */
-        max-width: 170px;
+    .np-photo-frame{
+        width:70%;
+        max-width:125px;
+    }
+
+    .np-paper-line{
+        width:90%;
     }
 }
