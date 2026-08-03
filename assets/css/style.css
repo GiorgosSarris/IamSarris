@@ -141,22 +141,52 @@ body:has(.np-page-body) .newspaper:not(.newspaper-home) {
     border-bottom: 1px solid #1a1008;
 }
 
-/* ── ΦΩΤΟ ── */
+/* ── PHOTO ── */
 .np-photo {
-    padding: clamp(6px, 1.2vw, 10px);
+    padding: 12px;
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.np-photo-top,
+.np-photo-bottom {
+    width: 72%;
+    height: 1px;
+    background: #8d6b3c;
+    position: relative;
+}
+
+.np-photo-top::after,
+.np-photo-bottom::after {
+    content: "✦";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 8px;
+    background: #f2e8d0;
+    color: #8d6b3c;
+    font-size: 11px;
 }
 
 .np-photo-frame {
     width: 100%;
+    max-width: 220px;
+    aspect-ratio: 4 / 5;   /* κρατάει σωστές αναλογίες */
     background: #d4c4a0;
     border: 1px solid #3a2a10;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 0;
+    padding: 4px;
+}
+
+.np-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(30%);
 }
 
 .np-photo-frame img {
@@ -391,4 +421,26 @@ body:has(.np-page-body) .newspaper:not(.newspaper-home) {
 
 @media (max-width: 480px) {
     .modal-body { padding: 16px 14px; }
+}
+
+@media (max-width: 640px) {
+
+    .np-grid-main {
+        grid-template-columns: 1fr;
+    }
+
+    .np-left-stack {
+        border-right: none;
+        border-bottom: 1px solid #1a1008;
+    }
+
+    .np-photo-frame {
+        max-width: 170px;      /* μικρότερη φωτογραφία */
+        aspect-ratio: 4 / 5;   /* δεν ψηλώνει */
+    }
+
+    .np-photo-top,
+    .np-photo-bottom {
+        width: 55%;
+    }
 }
