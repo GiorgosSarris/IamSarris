@@ -1,0 +1,769 @@
+:root {
+  font-size: 100%;
+  /* Generated grain texture (no real paper photo asset is available) — a
+     fine, even grain to fake aged newsprint/paper fiber. Layered with a
+     blend mode over a color gradient so it reads as a photographed surface
+     rather than a flat, empty gradient. The corkboard itself now uses a real
+     photo (see .corkboard-frame) instead of a simulated texture. */
+  --paper-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='3' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+
+  --ink: #1a1309;
+  --paper: #f0e6b8;
+  --board-black: #211509;
+  --note-yellow: #f6dd63;
+  --note-pink: #f3aac9;
+  --note-blue: #8ec6ef;
+  --note-green: #a9dd8f;
+  --note-orange: #f5a94f;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+/* ---------- Shared corkboard backdrop (no outer wood frame) ---------- */
+
+.corkboard-page,
+.flyer-page {
+  display: flex;
+}
+
+/* Below 900px the pinned notes fall back to a natural, stacked flow (see
+   the responsive block), so the home board needs to grow/scroll like any
+   normal page there. Above it the notes are absolutely positioned within a
+   fixed-size board, so the whole page can be pinned to exactly one screen
+   with no scrollbar. */
+.corkboard-page,
+.flyer-page {
+  min-height: 100vh;
+}
+
+@media (min-width: 901px) {
+  .corkboard-page {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
+
+.corkboard-frame {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 56px 24px 40px;
+  background-color: #b17d3f;
+  /* A real photographed cork board, not a simulated pattern — set inline via
+     corkboardBackgroundStyle (see src/corkboardBackground.ts), since a CSS
+     url() here doesn't resolve correctly under this project's Vite base.
+     A soft dark vignette on top keeps the corners readable under the pinned
+     notes and hides the seam where the (non-tileable) photo is stretched to
+     cover. Photo credit: see src/assets/CREDITS.md. */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12), inset 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+.corkboard-page .corkboard-frame {
+  padding: 36px 24px 24px;
+  gap: 40px;
+}
+
+@media (min-width: 901px) {
+  .corkboard-page .corkboard-frame {
+    overflow: hidden;
+  }
+}
+
+.flyer-page .corkboard-frame {
+  justify-content: center;
+  padding: 96px 24px 64px;
+}
+
+/* ---------- Home: a corkboard with pinned notes ---------- */
+
+.corkboard-note {
+  position: relative;
+  width: min(760px, 90vw);
+  padding: clamp(20px, 3.4vw, 32px);
+  border: 1px solid rgba(26, 19, 9, 0.25);
+  background-color: var(--paper);
+  background-image: var(--paper-noise);
+  background-blend-mode: multiply;
+  background-size: 250px 250px;
+  transform: rotate(-1deg);
+  box-shadow: 0 40px 70px -20px rgba(20, 10, 0, 0.55), 0 6px 16px rgba(20, 10, 0, 0.3);
+}
+
+.prospect-head {
+  margin-bottom: 14px;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.prospect-tag {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 5px 20px;
+  border-radius: 999px;
+  background: var(--board-black);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.corkboard-note h1 {
+  margin: 0;
+  padding-bottom: 12px;
+  border-bottom: 3px double var(--ink);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(1.7rem, 6vw, 3.2rem);
+  line-height: 0.95;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.note-accent {
+  color: var(--board-black);
+}
+
+.prospect-tagline {
+  margin: 10px 0 0;
+  font-family: 'PT Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  color: #57493a;
+}
+
+.prospect-body {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  text-align: left;
+}
+
+.prospect-photo {
+  flex: 0 0 auto;
+  width: clamp(120px, 18vw, 180px);
+  height: clamp(120px, 18vw, 180px);
+  border: 4px solid #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ded2ac;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.prospect-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.prospect-photo-placeholder {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #7a6c4c;
+}
+
+.prospect-stats {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.prospect-stat-row {
+  display: grid;
+  grid-template-columns: minmax(72px, 96px) 1fr 26px;
+  align-items: center;
+  gap: 10px;
+}
+
+.prospect-stat-label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #57493a;
+}
+
+.prospect-stat-bar {
+  height: 8px;
+  background: rgba(26, 19, 9, 0.15);
+}
+
+.prospect-stat-bar span {
+  display: block;
+  height: 100%;
+  background: var(--board-black);
+}
+
+.prospect-stat-value {
+  font-family: 'PT Serif', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--ink);
+  text-align: right;
+}
+
+/* A single row, one slot per note — each card owns its own horizontal
+   space, so the scatter (rotation + small vertical nudge below) can never
+   make two of them overlap. */
+.pin-cards {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 44px;
+  width: 100%;
+  max-width: 1340px;
+}
+
+.pin-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  flex: 0 1 230px;
+  /* Flex items default to min-width: auto, which refuses to shrink below
+     the content's own intrinsic width — that's what let cards overflow
+     their slot and collide with their neighbor. Zeroing it lets flex-basis
+     actually shrink the card to fit. */
+  min-width: 0;
+  /* Matches the polaroid cards' height. The notes' content packs at the
+     top (flex-direction: column, no justify-content), so the leftover
+     space at the bottom just shows more of the ruled-notebook-line
+     background — blank lines, like an index card that isn't full yet. */
+  min-height: 260px;
+  padding: 32px 18px 28px;
+  border: 0;
+  background-color: var(--paper);
+  background-image:
+    var(--paper-noise),
+    repeating-linear-gradient(to bottom, transparent 0 23px, rgba(26, 19, 9, 0.14) 23px 24px);
+  background-blend-mode: multiply, normal;
+  background-size: 250px 250px, 100% 24px;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+  clip-path: polygon(
+    0 0, 100% 0, 100% 90%, 96% 93%, 91% 89%, 87% 94%, 82% 90%, 77% 95%,
+    73% 90%, 68% 94%, 64% 89%, 59% 95%, 55% 90%, 50% 94%, 46% 89%, 41% 95%,
+    37% 90%, 32% 94%, 28% 89%, 23% 95%, 19% 90%, 14% 94%, 10% 89%, 5% 95%, 0 90%
+  );
+  box-shadow: 0 14px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.pin-card:hover {
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.42);
+}
+
+.pin-card:focus-visible {
+  outline: 3px solid var(--board-black);
+  outline-offset: 3px;
+}
+
+/* Inside the note/polaroid's own box (not overhanging the edge), so it
+   survives the torn-paper clip-path and stays put when the card shrinks
+   or reflows on small screens. */
+.pin-dot {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff8b7a, #b3241a 70%);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* All notes share the same aged-paper color as the central card; the
+   small tag is the only thing that carries the section's accent color. */
+.pin-tag {
+  align-self: flex-start;
+  margin: -4px 0 2px -4px;
+  padding: 4px 12px;
+  background: var(--accent);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+.pin-label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.pin-desc {
+  margin: 2px 0 0;
+  font-family: 'PT Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #4a3f31;
+}
+
+.pin-card-yellow {
+  --accent: var(--note-yellow);
+}
+
+.pin-card-pink {
+  --accent: var(--note-pink);
+}
+
+.pin-card-blue {
+  --accent: var(--note-blue);
+}
+
+.pin-card-green {
+  --accent: var(--note-green);
+}
+
+.pin-card-orange {
+  --accent: var(--note-orange);
+}
+
+/* Polaroid-style cards (GitHub / LinkedIn): a plain white photo wrap
+   instead of a colored sticky note, straight edges, brand mark centered
+   like a snapshot, bold caption underneath. */
+.pin-card-photo {
+  align-items: center;
+  padding: 32px 16px 20px;
+  background-color: #fff;
+  background-image: none;
+  clip-path: none;
+}
+
+.pin-photo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 3px solid var(--accent);
+}
+
+.pin-photo-frame-github {
+  background: #17181c;
+}
+
+.pin-photo-frame-linkedin {
+  background: #0a66c2;
+}
+
+.pin-caption {
+  margin-top: 12px;
+  font-family: 'PT Serif', Georgia, serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.pin-card-0 {
+  transform: rotate(-7deg) translateY(6px);
+}
+
+.pin-card-1 {
+  transform: rotate(5deg) translateY(-6px);
+}
+
+.pin-card-2 {
+  transform: rotate(-4deg) translateY(10px);
+}
+
+.pin-card-3 {
+  transform: rotate(6deg) translateY(-4px);
+}
+
+.pin-card-4 {
+  transform: rotate(-3deg) translateY(2px);
+}
+
+.pin-card:hover {
+  transform: scale(1.04) rotate(0deg) translateY(0);
+  z-index: 5;
+}
+
+/* ---------- Resume / contact article pages ---------- */
+
+.back-link {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(240, 230, 184, 0.92);
+  color: var(--ink);
+  font-family: 'PT Serif', Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px rgba(20, 10, 0, 0.35);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.back-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(20, 10, 0, 0.42);
+}
+
+.back-link:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.flyer-sheet {
+  width: min(920px, 100%);
+  margin: 0 auto;
+  padding: 40px 48px 48px;
+  background-color: var(--paper);
+  background-image: var(--paper-noise);
+  background-blend-mode: multiply;
+  background-size: 250px 250px;
+  /* A deep, warm shadow so the sheet reads as a physical object resting
+     on the corkboard behind it, not a flat panel. */
+  box-shadow: 0 50px 90px -25px rgba(20, 10, 0, 0.6), 0 6px 16px rgba(20, 10, 0, 0.3);
+}
+
+.flyer-sheet-contact {
+  width: min(640px, 100%);
+}
+
+.flyer-header {
+  position: relative;
+  margin-bottom: 26px;
+  padding-bottom: 18px;
+  border-bottom: 4px double var(--ink);
+  text-align: center;
+}
+
+/* A single pushpin at the top of the sheet, echoing the corkboard home page. */
+.flyer-header::before {
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff8b7a, #b3241a 70%);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  transform: translateX(-50%);
+}
+
+.flyer-kicker {
+  display: inline-block;
+  margin-bottom: 10px;
+  padding: 3px 16px;
+  border-radius: 999px;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.flyer-kicker-yellow {
+  background: var(--note-yellow);
+  color: var(--ink);
+}
+
+.flyer-kicker-pink {
+  background: var(--note-pink);
+  color: var(--ink);
+}
+
+.flyer-kicker-blue {
+  background: var(--note-blue);
+  color: var(--ink);
+}
+
+.flyer-kicker-green {
+  background: var(--note-green);
+  color: var(--ink);
+}
+
+.flyer-kicker-orange {
+  background: var(--note-orange);
+  color: var(--ink);
+}
+
+.flyer-header h1 {
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 6vw, 2.9rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+
+.flyer-grid {
+  columns: 2;
+  column-gap: 36px;
+  column-rule: 1px solid rgba(26, 19, 9, 0.28);
+}
+
+.flyer-block {
+  break-inside: avoid;
+  margin-bottom: 24px;
+  padding-top: 10px;
+  border-top: 3px double var(--ink);
+}
+
+.flyer-block h2 {
+  margin: 0 0 10px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+
+.flyer-block p,
+.flyer-block li,
+.contact-card {
+  font-family: 'PT Serif', Georgia, serif;
+  font-size: 0.88rem;
+  line-height: 1.62;
+  color: #2a2015;
+}
+
+.flyer-block p {
+  margin: 0 0 10px;
+}
+
+/* A newspaper-style drop cap on the opening paragraph of the article. */
+.flyer-block:first-child p:first-of-type::first-letter {
+  float: left;
+  margin: 2px 6px 0 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 0.78;
+  color: var(--ink);
+}
+
+.flyer-block ul {
+  margin: 0 0 4px;
+  padding-left: 18px;
+}
+
+.flyer-block li {
+  margin-bottom: 4px;
+}
+
+.flyer-experience-item {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(26, 19, 9, 0.2);
+}
+
+.flyer-experience-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.flyer-experience-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.flyer-experience-heading strong {
+  font-family: 'PT Serif', Georgia, serif;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.flyer-experience-heading span {
+  font-family: 'PT Serif', Georgia, serif;
+  font-size: 0.74rem;
+  font-style: italic;
+  color: #57493a;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.contact-card {
+  display: block;
+  padding: 18px 20px;
+  border-top: 3px double var(--ink);
+  background: transparent;
+  text-decoration: none;
+  cursor: default;
+}
+
+.contact-card span {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-family: 'PT Serif', Georgia, serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: #57493a;
+}
+
+.contact-card strong {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .pin-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+  }
+
+  .pin-card,
+  .pin-card-0,
+  .pin-card-1,
+  .pin-card-2,
+  .pin-card-3,
+  .pin-card-4 {
+    flex: 0 0 208px;
+    transform: none;
+  }
+
+  .pin-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (max-width: 640px) {
+  .prospect-body {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .prospect-stats {
+    width: 100%;
+  }
+
+  .prospect-stat-row {
+    grid-template-columns: minmax(64px, 84px) 1fr 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .flyer-sheet {
+    padding: 24px;
+  }
+
+  .flyer-grid {
+    columns: 1;
+    column-rule: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .corkboard-frame {
+    padding: 32px 16px;
+    gap: 28px;
+  }
+
+  .flyer-page .corkboard-frame {
+    padding: 72px 12px 20px;
+  }
+
+  .flyer-sheet {
+    padding: 18px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  :root {
+    font-size: 92%;
+  }
+}
+
+@media (max-width: 480px) {
+  .flyer-header h1 {
+    font-size: clamp(1.6rem, 9vw, 2.4rem);
+  }
+
+  .corkboard-note {
+    width: min(640px, 86vw);
+    padding: clamp(16px, 4vw, 24px);
+  }
+
+  .corkboard-note h1 {
+    font-size: clamp(1.35rem, 7.5vw, 2.2rem);
+  }
+
+  .prospect-photo {
+    width: clamp(100px, 22vw, 150px);
+    height: clamp(100px, 22vw, 150px);
+  }
+
+  :root {
+    font-size: 88%;
+  }
+}
