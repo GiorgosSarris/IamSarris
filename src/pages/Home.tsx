@@ -12,14 +12,10 @@ interface Props {
 // then a plain placeholder shows instead of a broken-image icon.
 const profilePhoto = `${import.meta.env.BASE_URL}profile.jpg`
 
-// Just for flavor, in the spirit of a sports scouting report — deliberately
-// generic (not actual job skills) so it stays a joke, not a claim.
-const prospectStats = [
-  { label: 'Work Ethic', value: 88 },
-  { label: 'Luck', value: 12 },
-  { label: 'Sarcasm', value: 95 },
-  { label: 'Caffeine Addiction', value: 100 },
-]
+const prospectBio =
+  'Full-stack software engineer with a strong foundation in algorithms, databases, ' +
+  'operating systems, and artificial intelligence — building backend and frontend ' +
+  'systems across C, C++, Python, Java, and JavaScript.'
 
 function Home({ onOpen }: Props) {
   const [photoOk, setPhotoOk] = useState(true)
@@ -47,17 +43,7 @@ function Home({ onOpen }: Props) {
               )}
             </div>
 
-            <div className="prospect-stats">
-              {prospectStats.map((stat) => (
-                <div className="prospect-stat-row" key={stat.label}>
-                  <span className="prospect-stat-label">{stat.label}</span>
-                  <div className="prospect-stat-bar">
-                    <span style={{ width: `${stat.value}%` }} />
-                  </div>
-                  <span className="prospect-stat-value">{stat.value}</span>
-                </div>
-              ))}
-            </div>
+            <p className="prospect-bio">{prospectBio}</p>
           </div>
         </div>
 

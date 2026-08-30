@@ -164,8 +164,8 @@ body {
 
 .prospect-photo {
   flex: 0 0 auto;
-  width: clamp(120px, 18vw, 180px);
-  height: clamp(120px, 18vw, 180px);
+  width: clamp(180px, 26vw, 260px);
+  height: clamp(180px, 26vw, 260px);
   border: 4px solid #fff;
   border-radius: 4px;
   overflow: hidden;
@@ -191,48 +191,14 @@ body {
   color: #7a6c4c;
 }
 
-.prospect-stats {
+.prospect-bio {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 12px;
+  margin: 0;
   min-width: 0;
-}
-
-.prospect-stat-row {
-  display: grid;
-  grid-template-columns: minmax(72px, 96px) 1fr 26px;
-  align-items: center;
-  gap: 10px;
-}
-
-.prospect-stat-label {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: #57493a;
-}
-
-.prospect-stat-bar {
-  height: 8px;
-  background: rgba(26, 19, 9, 0.15);
-}
-
-.prospect-stat-bar span {
-  display: block;
-  height: 100%;
-  background: var(--board-black);
-}
-
-.prospect-stat-value {
   font-family: 'PT Serif', Georgia, serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--ink);
-  text-align: right;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.6;
+  color: #3a2f22;
 }
 
 /* A single row, one slot per note — each card owns its own horizontal
@@ -701,12 +667,8 @@ body {
     text-align: center;
   }
 
-  .prospect-stats {
+  .prospect-bio {
     width: 100%;
-  }
-
-  .prospect-stat-row {
-    grid-template-columns: minmax(64px, 84px) 1fr 24px;
   }
 }
 
@@ -759,8 +721,8 @@ body {
   }
 
   .prospect-photo {
-    width: clamp(100px, 22vw, 150px);
-    height: clamp(100px, 22vw, 150px);
+    width: clamp(140px, 34vw, 210px);
+    height: clamp(140px, 34vw, 210px);
   }
 
   :root {
