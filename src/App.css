@@ -40,21 +40,12 @@ body {
   display: flex;
 }
 
-/* Below 900px the pinned notes fall back to a natural, stacked flow (see
-   the responsive block), so the home board needs to grow/scroll like any
-   normal page there. Above it the notes are absolutely positioned within a
-   fixed-size board, so the whole page can be pinned to exactly one screen
-   with no scrollbar. */
+/* Always allowed to grow past one screen and scroll — pinning it to a
+   fixed 100vh with overflow: hidden used to clip real content (the photo
+   card plus all the pinned notes) off-screen on shorter/smaller displays. */
 .corkboard-page,
 .flyer-page {
   min-height: 100vh;
-}
-
-@media (min-width: 901px) {
-  .corkboard-page {
-    height: 100vh;
-    overflow: hidden;
-  }
 }
 
 .corkboard-frame {
@@ -82,12 +73,6 @@ body {
 .corkboard-page .corkboard-frame {
   padding: 36px 24px 24px;
   gap: 40px;
-}
-
-@media (min-width: 901px) {
-  .corkboard-page .corkboard-frame {
-    overflow: hidden;
-  }
 }
 
 .flyer-page .corkboard-frame {
